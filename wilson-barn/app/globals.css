@@ -1,0 +1,132 @@
+:root { 
+  --primary: #1f7a8c;
+  --secondary: #388697;
+  --background: #EDD4B2;
+  --text: #02020B;
+  --accent: #BB0A21;
+}
+
+body {
+  margin: 0;
+  background-color: var(--background);
+  color: var(--text)
+}
+#page {
+  display: flex;
+  flex-direction: column;
+
+}
+
+#main-body {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2vw;
+}
+#main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+#logo {
+  font-family: 'Inter', sans-serif;
+  margin-left: 2vw;
+  margin-top: 2vw;
+  font-size: 1.5rem;
+  border-radius: 4px;
+  accent-color: var(--accent);
+}
+
+#main-header ul {
+  display: flex;
+  gap: 2rem;
+  font-weight: bold;
+}
+
+#main-header ul a {
+  text-decoration: none;
+  color: var(--primary);
+  accent-color: var(--accent);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+#main-header ul a:hover,
+#main-header ul a.active {
+  background-color: var(--background);
+  color: var(--secondary);
+  accent-color: var(--accent);
+}
+
+.event {
+  display: flex;
+  flex-direction: column;
+
+  margin-left: 10vw;
+  margin-right: 10vw;
+}
+
+.eventHeader h1{
+  display: flex;
+  fill: 100%;
+  color: var(--primary);
+}
+
+
+/* form logic */
+.form-control label,
+.form.control input, 
+.form-control textarea {
+  display:block;
+  width: 100%;
+  margin-bottom: 0.25rem;
+}
+
+.form-control label {
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: var(--primary);
+}
+
+.form-control input,
+.form-control textarea {
+  font: inherit;
+  padding: 0.5rem;
+  border-radius: 4px;
+  width: 40vw;
+  border: none;
+  background-color: var(--primary);
+  color: var(--background)
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  width: 41.4vw;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.form-actions button {
+  font: inherit;
+  padding: 0.5 rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--primary);
+  color: var(--background);
+  cursor: pointer;
+}
+
+.form-actions button:hover {
+  background-color: var(--secondary);
+}
+
+.form-actions button[type='reset'] {
+  background-color: var(--accent);
+}
+
+.form-errors {
+  color: var(--accent);
+  font-weight: bold;
+  font-size: 0.9;
+}
