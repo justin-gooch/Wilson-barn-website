@@ -9,7 +9,7 @@ export default function about() {
 
             <p>The Wilson barn is a National Historic Site.  The Friends of the Barn was established to preserve Livonia's historical dairy farm.  We offer a variety of events including a Farmer's Market, Pumpkin Fest, and a Car Show.  You are invited to participate in these events or join the many volunteers who contribute to the preservation of one of Livona's treasured site.  Volunteers are always welcome.  All events are smoke and alcohol free.</p>
 
-            <p>
+            <>
                 <ul className="event-item">
                     <li>Visit us at 29350 West Chicago (at Middle Belt Road)</li>
                     <li>Phone: (734) 427-4311</li>
@@ -18,7 +18,7 @@ export default function about() {
                     <li>Facebook: The Wilson Barn</li>
                 </ul>
             
-            </p>
+            </>
         </article>
         </>
     )
