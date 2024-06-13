@@ -26,6 +26,7 @@ export default function EventForm({action}) {
                 <input type="text" id="description" name="description" />
             </p>
             <p className="form-control">
+
                 <label htmlFor="content">Content</label>
                 <input type="text" id="content" name="content" />
             </p>
@@ -34,6 +35,7 @@ export default function EventForm({action}) {
                 <label htmlFor="eventDateTime">Event DateTime</label>
                 <input type="datetime-local" id="eventDateTime" name="eventDateTime" />
             </p>
+
 
             <p className="form-actions">
                 <FormSubmit />

@@ -1,13 +1,12 @@
 import Link from "next/link";
 import EventsList from "./eventsList";
 
-
-
 export default async function Events() {
     
     return (
         <>
         <h1>Events</h1>
+
         <div>
             <EventsList />
         </div>

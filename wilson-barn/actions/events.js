@@ -11,6 +11,7 @@ export async function createEvent(prevState, formData) {
     const description = formData.get('description');
     const currEventDateTime = formData.get('eventDateTime');
 
+
     let errors = [];
 
     if (!title || title.trim().length === 0) {
@@ -38,6 +39,7 @@ export async function createEvent(prevState, formData) {
     }
 
     const eventDateTime = new Date(currEventDateTime).toISOString();
+
 
     let image_url;
 

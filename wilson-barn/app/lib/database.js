@@ -16,6 +16,7 @@ function initDb() {
         title TEXT NOT NULL,
         description TEXT NOT NULL,
         eventDateTime datetime default current_timestamp,
+
         content TEXT NOT NULL,
         created_at TEXT DEFAULT CURRENT_TIMESTAMP,
         user_id INTEGER,
@@ -41,6 +42,7 @@ export async function getEvents(maxNumber) {
 
     const statement = db.prepare(`SELECT events.id, image_url as image, title, content, eventDateTime, description, created_at as createdAt, first_name as userFirstName, last_name as userLastName FROM events INNER JOIN users on events.user_id = users.id ${limitClause}`);
 
+
     return maxNumber ? statement.all(maxNumber) : statement.all();
 }
 
@@ -53,4 +55,5 @@ export async function getEvent(eventId) {
 export async function storeEvent(post) {
     const statement = db.prepare(`INSERT INTO events (image_url, title, content, description, user_id, eventDateTime) VALUES (?, ?, ?, ?, ?, ?)`)
     return statement.run(post.image_url, post.title, post.content, post.description, post.userId, post.eventDateTime)
+
 }

@@ -23,6 +23,7 @@ export default async function EventsList() {
                         </div>
                     
                         </Link>
+
                     </li>
                 ))}
             </ul>

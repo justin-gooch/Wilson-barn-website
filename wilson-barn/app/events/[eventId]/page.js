@@ -24,6 +24,7 @@ export default async function EventPage({params}) {
                         width={200} 
                         height={150} 
                         alt={thisEvent.title} /></>
+
             </header>
             <p>
                 {thisEvent.content}
