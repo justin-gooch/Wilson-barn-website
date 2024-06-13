@@ -1,3 +1,5 @@
+import Calendar from "../components/calendar/calendar";
+
 export default function Rentals() {
     return(
         <article class="article">
@@ -7,6 +9,7 @@ export default function Rentals() {
                 <li>Rental includes the use of the main barn area and grounds, including restrooms, electricity and limited kitchen amenities </li>
                 <li>(freezer, sink, refrigerator and microwave).  </li><li>For more information on reservations or fees please all (734) 427-4311.</li>
             </ul>
+            <Calendar />
         </article>
     )
 }

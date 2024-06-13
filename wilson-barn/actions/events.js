@@ -8,6 +8,8 @@ export async function createEvent(prevState, formData) {
     const title = formData.get('title');
     const image = formData.get('image');
     const content = formData.get('content');
+    const description = formData.get('description');
+    const currEventDateTime = formData.get('eventDateTime');
 
     let errors = [];
 
@@ -23,9 +25,19 @@ export async function createEvent(prevState, formData) {
         errors.push('Image is required');
     }
 
+    if(!description || description.trim().length === 0) {
+        errors.push('Description is required');
+    }
+
+    if(!currEventDateTime || currEventDateTime.trim().length === 0) {
+        errors.push('event DateTime is required');
+    }
+
     if(errors.length > 0) {
         return {errors};
     }
+
+    const eventDateTime = new Date(currEventDateTime).toISOString();
 
     let image_url;
 
@@ -41,6 +53,8 @@ export async function createEvent(prevState, formData) {
         image_url,
         title,
         content,
+        description,
+        eventDateTime,
         userId: 1
     })
 

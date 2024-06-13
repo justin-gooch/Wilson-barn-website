@@ -19,16 +19,16 @@ export default function MainHeader() {
             <nav>
                 <ul>
                     <li>
-                        <NavLink href='/'>About</NavLink>
+                        <NavLink href='/about'>About</NavLink>
                     </li>
                     <li>
                         <NavLink href='/events'>Events</NavLink>
                     </li>
                     <li>
-                        <NavLink href='/'>Rentals</NavLink>
+                        <NavLink href='/rentals'>Rentals</NavLink>
                     </li>
                     <li>
-                        <NavLink href='/'>Forms</NavLink>
+                        <NavLink href='/forms'>Forms</NavLink>
                     </li>
                 </ul>
 
