@@ -1,6 +1,7 @@
 import { getEvent } from "@/app/lib/database";
 import Event from "./event";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 
 export default async function EventPage({params}) {
     const eventId = params.eventId;
@@ -11,7 +12,6 @@ export default async function EventPage({params}) {
     }
 
     const thisEvent = event[0]
-    console.log(thisEvent);
 
     return (
         <article className='event'>
@@ -19,6 +19,12 @@ export default async function EventPage({params}) {
                 <h1>{thisEvent.title}</h1>
                 <h6>By: {thisEvent.userFirstName} {thisEvent.userLastName}<br/>
                 {thisEvent.created_at}</h6>
+                <><Image 
+                        src={thisEvent.image}
+                        width={200} 
+                        height={150} 
+                        alt={thisEvent.title} /></>
+
             </header>
             <p>
                 {thisEvent.content}

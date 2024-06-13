@@ -22,9 +22,20 @@ export default function EventForm({action}) {
                 />
             </p>    
             <p className="form-control">
+                <label htmlFor="description">Description</label>
+                <input type="text" id="description" name="description" />
+            </p>
+            <p className="form-control">
+
                 <label htmlFor="content">Content</label>
                 <input type="text" id="content" name="content" />
             </p>
+
+            <p className="form-control">
+                <label htmlFor="eventDateTime">Event DateTime</label>
+                <input type="datetime-local" id="eventDateTime" name="eventDateTime" />
+            </p>
+
 
             <p className="form-actions">
                 <FormSubmit />
