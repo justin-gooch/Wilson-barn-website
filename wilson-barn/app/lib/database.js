@@ -22,11 +22,22 @@ function initDb() {
         FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE
     )`)
 
+    db.exec(`CREATE TABLE IF NOT EXISTS rentalDays (
+        id INTEGER PRIMARY KEY,
+        rentalDate datetime UNIQUE,
+        renterID INTEGER,
+        isPaid INTEGER,
+        FOREIGN KEY(renterID) REFERENCES users(id) ON DELETE CASCADE
+    )`)
+
     const statement = db.prepare('SELECT COUNT(*) AS count FROM users');
 
     if(statement.get().count === 0) {
         db.exec(`INSERT INTO users(first_name, last_name, email) VALUES('Justin', 'Gooch', 'justinthegooch@gmail.com')`)
+
     }
+
+    createNewRentalDates(new Date('may 30 2024'), new Date('september 29 2024'));
 
 }
 
@@ -64,4 +75,24 @@ export async function getEventsList(maxNumber) {
 export async function storeEvent(post) {
     const statement = db.prepare(`INSERT INTO events (image_url, title, content, description, user_id, eventDateTime) VALUES (?, ?, ?, ?, ?, ?)`)
     return statement.run(post.image_url, post.title, post.content, post.description, post.userId, post.eventDateTime)
+}
+
+export async function createNewRentalDates(startDate, endDate) {
+    let tmpDate = new Date(startDate) 
+    if (startDate && endDate && startDate < endDate) {
+        while (tmpDate < endDate) {
+            if (tmpDate.getDay() == 6 || tmpDate.getDay() == 0) {
+                const statement = db.prepare(`INSERT INTO rentalDays (rentalDate, isPaid) VALUES(?, 0)`)
+                statement.run(tmpDate.toISOString());
+            }
+            tmpDate.setDate(tmpDate.getDate()+ 1)
+        }
+    } else {
+        throw error('your start date for the range must be greater than the end date');
+    }
+}
+
+export async function fetchAvailableRentalDates() {
+    const statement = db.prepare(`SELECT rentalDate from rentalDays WHERE isPaid = 0 AND renterId is null`)
+    return statement.all();
 }

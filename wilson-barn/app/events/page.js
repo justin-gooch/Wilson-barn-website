@@ -9,9 +9,6 @@ export default async function Events() {
     return (
         <>
         <h1>Events</h1>
-        <p>
-            Here lies the events
-        </p>
         <div>
             <EventsList />
         </div>

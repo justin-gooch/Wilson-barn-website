@@ -54,7 +54,7 @@ body {
 
 #main-header ul a:hover,
 #main-header ul a.active {
-  background-color: var(--background);
+  background-color: var(--text);
   color: var(--secondary);
   accent-color: var(--accent);
 }
@@ -183,48 +183,3 @@ body {
   flex-direction: column;
   width: 40rem;
 }
-
-/* calendar */
-.calendar-shell {
-  display: flex;
-  flex-direction: column;
-  width: 15rem;
-  height: 15rem;
-  background-color: var(--primary);
-  color: var(--background);
-}
-
-.calendar-month-and-toggle {
-  display: flex;
-  flex-direction: row;
-  font-weight: bold;
-  padding-left: 2rem;
-  padding-top: 0.5rem;
-  gap: 2rem;
-}
-
-.calendar-days {
-  display: flex;
-  flex-direction: column;
-}
-
-.calendar-day-names {
-  display: flex;
-  flex-direction: row;
-  padding-left: 1rem;
-  gap: 1rem;
-}
-
-.calendar-day-numbers {
-  display: flex;
-  flex-direction: row;
-  padding-left: 1rem;
-  gap: 1rem;
-}
-
-.calendar-day {
-  width: 0.75rem;
-}
-
-
-
