@@ -1,9 +1,18 @@
 'use client'
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css'
 export default function RentalCalendar({availableRentals}) {
-    const [selectedDate, setSelectedDate] = useState(new Date());
+    const [selectedDate, setSelectedDate] = useState();
+    const router = useRouter();
+
+
+    function bookThisDate() {
+        // console.log('I was rented with', selectedDate.toLocaleDateString().replaceAll('/', '-'))
+        // redirect(`/rentals/rent/${selectedDate.toLocaleDateString().replaceAll('/', '-')}`)
+        router.push(`/rentals/book/${selectedDate.toLocaleDateString().replaceAll('/', '-')}`)
+    }
     
 
     function isSameDay(day1, day2) {
@@ -28,7 +37,6 @@ export default function RentalCalendar({availableRentals}) {
     } 
 
     function onChange(nextDate) {
-        console.log('the day youve selected is', nextDate)
         setSelectedDate(nextDate)
     }
 
@@ -40,12 +48,15 @@ export default function RentalCalendar({availableRentals}) {
         }
     }
     return (
-        <div>
+        <div className='calendar-container'>
             <Calendar 
             onChange={onChange}
             value={selectedDate}
             tileDisabled={tileDisabled}
-             />
+            />
+            <button className='book-rental' disabled={!selectedDate} onClick={bookThisDate}>
+                Book Now
+            </button>
         </div>
     )
 }

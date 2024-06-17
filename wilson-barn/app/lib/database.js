@@ -37,7 +37,14 @@ function initDb() {
 
     }
 
-    createNewRentalDates(new Date('may 30 2024'), new Date('september 29 2024'));
+    const statement2 = db.prepare('SELECT COUNT(*) AS count FROM rentalDays')
+    if (statement2.get().count === 0) {
+        //TODO: Figure out a way to set up rental dates non programmatically later. 
+        //perhaps as part of some kind of admin console
+        createNewRentalDates(new Date('may 30 2024'), new Date('september 29 2024'));
+    }
+
+    
 
 }
 

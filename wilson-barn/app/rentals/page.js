@@ -3,6 +3,7 @@ import { fetchAvailableRentalDates } from "../lib/database";
 
 export default async function Rentals() {
     const availableRentals = await fetchAvailableRentalDates();
+
     
 
     return(
@@ -13,8 +14,8 @@ export default async function Rentals() {
                 <li>Rental includes the use of the main barn area and grounds, including restrooms, electricity and limited kitchen amenities </li>
                 <li>(freezer, sink, refrigerator and microwave).  </li><li>For more information on reservations or fees please all (734) 427-4311.</li>
             </ul>
-            <h1>Available Dates</h1>
-            <Calendar availableRentals={availableRentals}/>
+            <h1>Available Rentals</h1>
+            <Calendar availableRentals={availableRentals} />
         </article>
     )
 }

@@ -1,5 +1,5 @@
 'use client'
-import FormSubmit from "../../components/eventForm/form-submit";
+import FormSubmit from "../form-submit";
 import { useFormState } from 'react-dom'
 
 export default function EventForm({action}) {
