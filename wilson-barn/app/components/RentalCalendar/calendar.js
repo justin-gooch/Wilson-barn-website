@@ -9,8 +9,6 @@ export default function RentalCalendar({availableRentals}) {
 
 
     function bookThisDate() {
-        // console.log('I was rented with', selectedDate.toLocaleDateString().replaceAll('/', '-'))
-        // redirect(`/rentals/rent/${selectedDate.toLocaleDateString().replaceAll('/', '-')}`)
         router.push(`/rentals/book/${selectedDate.toLocaleDateString().replaceAll('/', '-')}`)
     }
     

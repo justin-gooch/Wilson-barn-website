@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { getEvents } from "../lib/database";
 import Image from "next/image";
-import logo from '@/public/logo.jpeg'
 
 export default async function EventsList() {
     const eventsList = await getEvents();
