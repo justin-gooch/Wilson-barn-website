@@ -1,10 +1,8 @@
 import Link from "next/link";
-import { getEvents } from "../lib/database";
+// import { getEvents } from "../lib/database";
 import Image from "next/image";
 
-export default async function EventsList() {
-    const eventsList = await getEvents();
-    console.log('eventsList', eventsList)
+export default function EventsList({eventsList}) {
         return (
             <ul className="events">
                 {eventsList.map((event) => (
