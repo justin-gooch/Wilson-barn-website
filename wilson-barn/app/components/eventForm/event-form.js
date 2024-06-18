@@ -1,6 +1,8 @@
 'use client'
+
 import FormSubmit from "../form-submit";
 import { useFormState } from 'react-dom'
+
 
 export default function EventForm({action}) {
     const [state, formAction] = useFormState(action, {});
@@ -8,11 +10,11 @@ export default function EventForm({action}) {
         <>
         <h2>New Event</h2>
         <form action={formAction}>
-            <p className="form-control">
+            <div className="form-control">
                 <label htmlFor="title">Title</label>
                 <input type="text" id="title" name="title" />
-            </p>
-            <p className="form-control">
+            </div>
+            <div className="form-control">
                 <label htmlFor="image">Image</label>
                 <input
                     type="file"
@@ -20,24 +22,24 @@ export default function EventForm({action}) {
                     id="image"
                     name="image"
                 />
-            </p>    
-            <p className="form-control">
+            </div>    
+            <div className="form-control">
                 <label htmlFor="description">Description</label>
                 <input type="text" id="description" name="description" />
-            </p>
-            <p className="form-control">
+            </div>
+            <div className="form-control">
                 <label htmlFor="content">Content</label>
                 <input type="text" id="content" name="content" />
-            </p>
+            </div>
 
-            <p className="form-control">
+            <div className="form-control">
                 <label htmlFor="eventDateTime">Event DateTime</label>
                 <input type="datetime-local" id="eventDateTime" name="eventDateTime" />
-            </p>
+            </div>
 
-            <p className="form-actions">
+            <div className="form-actions">
                 <FormSubmit />
-            </p>
+            </div>
             {state.errors && 
             <ul className='form-errors'>
                 {state.errors.map((error) => (

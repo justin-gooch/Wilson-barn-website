@@ -1,0 +1,11 @@
+# ignore all .log files
+*.log
+
+# ignore the node_modules directory
+node_modules/
+
+# ignore the .env file
+.env.local
+
+# ignore the .next files
+.next/

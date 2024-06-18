@@ -75,6 +75,10 @@ body {
 
 
 /* form logic */
+
+form div {
+  padding-bottom: 1rem;
+}
 .form-control label,
 .form.control input, 
 .form-control textarea {
@@ -107,6 +111,12 @@ body {
   gap: 2rem;
   margin-top: 2rem;
 }
+
+.form-actions.signature {
+  justify-content: flex-start;
+  height: 2vw;
+}
+
 .form-actions button {
   font: inherit;
   padding: 0.5 rem 1rem;
@@ -133,6 +143,22 @@ body {
   color: var(--accent);
   font-weight: bold;
   font-size: 0.9;
+}
+.form-details {
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+}
+.form-control-bold-underline {
+  font-weight: bold;
+  text-decoration: underline;
+  color: var(--primary)
+}
+
+.form-control-yes-no {
+  display: flex;
+  width: 10vw;
+  padding-top: 1vw;
 }
 
 /* Events */
@@ -196,8 +222,9 @@ body {
 .book-rental {
   display: flex;
   width: 9vw;
-  height: 4vw;
+  height: 3vw;
   align-items: center;
+  justify-content: center;
   font-size: medium;
   margin-top: 2vw;
   gap: 2rem;
