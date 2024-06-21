@@ -2,23 +2,29 @@
 import { useFormState } from 'react-dom';
 import FormSubmit from '../form-submit';
 import SignatureCanvas from 'react-signature-canvas';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-export default function RentalForm({action}) {
+export default function RentalForm({action, rentalDate}) {
     const sigPad = useRef();
     const [state, formAction] = useFormState(action, {});
+    const [currentSignature, setCurrentSignature] = useState('');
 
-    useEffect(() => {
-        if(sigPad) {
+    const currRentalDate = new Date(rentalDate).toISOString().split('T')[0];
 
-        console.log('currSig', sigPad)
-
-        }
-    }, [sigPad])
 
     const clearSignature = () => {
         if (sigPad.current) {
             sigPad.current.clear();
+        }
+    }
+
+    const saveSignature = () => {
+        console.log('saveSignature was called')
+        if (sigPad.current) {
+            const sigImage = sigPad.current.toDataURL();
+            // setSignature(sigImage);
+            console.log('sigpad = ', sigPad.current.toDataURL())
+            setCurrentSignature(sigImage)
         }
     }
 
@@ -39,15 +45,19 @@ export default function RentalForm({action}) {
                 <input type="text" id="phone" name="phone" />
             </div >
             <div className="form-control">
+                <label htmlFor="email">Email</label>
+                <input type="text" id="email" name="email" />
+            </div >
+            <div className="form-control">
                 <label htmlFor="eventType">Type of Event</label>
                 <input type="text" id="eventType" name="eventType" />
             </div >
             <div className="form-control">
                 <label htmlFor="eventDate">Date of Event</label>
-                <input type="date" id="eventDate" name="eventDate" />
+                <input type="date" id="eventDate" name="eventDate" value={currRentalDate} readOnly />
             </div >
             <div className="form-control">
-                <div className='form-control-bold-underline'>Set up</div> and clean udiv time is included 
+                <div className='form-control-bold-underline'>Set up</div> and clean up time is included 
                 <br />in the rental time (5 hours) 
                 <label htmlFor="setupTimeInitial">Initial*</label>
                 <input type="text" id="setupTimeInitial" name="setupTimeInitial" />
@@ -152,12 +162,15 @@ export default function RentalForm({action}) {
                 </div >
                 <div className='form-control'>
                     <div className='form-control-bold-underline'>Signature:</div>
-                    <SignatureCanvas ref={sigPad} penColor='black' canvasProps={{width: 500, height: 200, className: 'signature-canvas'}} />
+                    <SignatureCanvas ref={sigPad} penColor='black' onEnd={saveSignature} canvasProps={{width: 500, height: 200, className: 'signature-canvas'}} />
                 </div >
                 <div className='form-actions signature'>
                     <button type='button' onClick={clearSignature} >Clear Signature</button>
-                    <button type='button' onClick={() => {}}>Save Signature</button>
+                    {/* <button type='button' onClick={saveSignature}>Save Signature</button> */}
                 </div >
+                <div hidden>
+                    <input type='text' id='signature' name='signature' value={currentSignature} onChange={saveSignature}/>
+                </div>
                 <div className='form-control'>
                     <div className='form-control-bold-underline'>Submit Date:</div>
                     <input type="date" id="submitDate" name="submitDate" value={new Date().toISOString().split('T')[0]} readOnly />
@@ -167,7 +180,7 @@ export default function RentalForm({action}) {
             
             
             <div className='form-actions'>
-                <FormSubmit />
+                <FormSubmit SubmitTitle='Submit Request' />
             </div >
 
         </form>

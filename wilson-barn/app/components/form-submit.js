@@ -2,7 +2,7 @@
 
 import { useFormStatus } from 'react-dom'
 
-export default function FormSubmit() {
+export default function FormSubmit({SubmitTitle='Create Post'}) {
     const status = useFormStatus();
 
     if (status.pending) {
@@ -12,7 +12,7 @@ export default function FormSubmit() {
     return (
         <>
         <button type="reset">Reset</button>
-        <button>Create Post</button>
+        <button>{SubmitTitle}</button>
         </>
     )
 }
