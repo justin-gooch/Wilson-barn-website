@@ -2,7 +2,7 @@
 import { useFormState } from 'react-dom';
 import FormSubmit from '../form-submit';
 import SignatureCanvas from 'react-signature-canvas';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 export default function RentalForm({action, rentalDate}) {
     const sigPad = useRef();

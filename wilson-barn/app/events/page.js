@@ -1,11 +1,13 @@
 import Link from "next/link";
-import { getEventsList } from "../lib/database";
+// import { getEvents } from "../lib/database";
+import { getEventsList, getEvents } from "../lib/events";
 import EventsList from "./eventsList";
-import { getEvents } from "../lib/database";
+import { isAdminAuth } from "../lib/auth";
 
 
 export default async function Events() {
     const eventsList = await getEvents();
+    const adminAuthed = await isAdminAuth();
     
     return (
         <>
@@ -14,8 +16,9 @@ export default async function Events() {
             <EventsList eventsList={eventsList} />
         </div>
 
-        <p>Add an event here</p>
-        <Link href="events/addEvent">Add Event</Link>
-        </>
+        {adminAuthed &&
+            <><p>Add an event here</p>
+        <Link href="events/addEvent">Add Event</Link> </>}
+        </> 
     )
 }

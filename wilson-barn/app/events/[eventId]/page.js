@@ -1,4 +1,4 @@
-import { getEvent } from "@/app/lib/database";
+import { getEvent } from "@/app/lib/events";
 import Event from "./event";
 import { notFound } from "next/navigation";
 

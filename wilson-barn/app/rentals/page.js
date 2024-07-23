@@ -1,5 +1,5 @@
 import Calendar from "../components/RentalCalendar/calendar";
-import { fetchAvailableRentalDates } from "../lib/database";
+import { fetchAvailableRentalDates } from "../lib/rentals";
 
 export default async function Rentals() {
     const availableRentals = await fetchAvailableRentalDates();

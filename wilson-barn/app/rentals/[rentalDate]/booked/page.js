@@ -1,7 +1,5 @@
-import createRentalPDF from "@/app/lib/createPDF"
-
 export default function rentalBooked({params}) {
-    createRentalPDF(params.rentalDate);
+    // createRentalPDF(params.rentalDate);
     return (
         <article>
             <h1>Your Rental on {params.rentalDate} has been successfully booked</h1>
