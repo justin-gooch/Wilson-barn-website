@@ -4,7 +4,8 @@ import Link from "next/link";
 import NavLink from "./nav-link";
 import Image from 'next/image';
 
-export default function MainHeader() {
+export default async function MainHeader() {
+
     return(
         <header id="main-header">
             <div id="logo">
@@ -33,6 +34,7 @@ export default function MainHeader() {
                     <li>
                         <NavLink href='/forms'>Forms</NavLink>
                     </li>
+                    {/* <AdminConsoleLink /> */}
                 </ul>
 
             </nav>

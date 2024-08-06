@@ -30,7 +30,8 @@ db.exec(`CREATE TABLE IF NOT EXISTS events (
     FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE
 )`);
 
-db.exec(`CREATE TABLE IF NOT EXISTS rentalDays (
+
+db.exec(`CREATE TABLE IF NOT EXISTS rental (
     id INTEGER PRIMARY KEY,
     rentalDate datetime UNIQUE,
     renterID INTEGER,
@@ -55,21 +56,21 @@ db.exec(`CREATE TABLE IF NOT EXISTS rentalInformation (
     noAlcoholInitial INTEGER NOT NULL,
     noBaloonsInitial INTEGER NOT NULL,
     noSmokingInitial INTEGER NOT NULL,
-    rentalDayID INTEGER NOT NULL,
+    rentalID INTEGER NOT NULL,
     signature TEXT NOT NULL, 
     submitDate datetime,
     FOREIGN KEY(renterID) references users(id)
-    FOREIGN KEY(rentalDayID) references rentalDays(id) ON DELETE CASCADE
+    FOREIGN KEY(rentalID) references rental(id) ON DELETE CASCADE
 )`);
 
 db.exec(`CREATE TABLE IF NOT EXISTS rentalInvoice (
     id INTEGER PRIMARY KEY,
     invoiceID TEXT NOT NULL,
-    invoiceDate INTEGER NOT NULL, 
+    invoiceDate INTEGER NOT NULL,
     rentalID INTEGER NOT NULL,
     paid INTEGER NOT NULL,
     sent INTEGER NOT NULL,
-    FOREIGN KEY(rentalID) references rentalInformation(id)
+    FOREIGN KEY(rentalID) references rental(id)
 )`)
 
 
@@ -77,7 +78,6 @@ const statement = db.prepare('SELECT COUNT(*) AS count FROM users');
 
 if(statement.get().count === 0) {
     db.exec(`INSERT INTO users(first_name, last_name, email, user_type) VALUES('Justin', 'Gooch', 'justinthegooch@gmail.com', 0)`)
-
 };
 
 
@@ -88,7 +88,7 @@ function createNewRentalDates(startDate, endDate) {
         while (tmpDate < endDate) {
             if (tmpDate.getDay() == 6 || tmpDate.getDay() == 0) {
                 // const currRentalDate = new Date(rentalDate).toISOString().split('T')[0];
-                const statement = db.prepare(`INSERT INTO rentalDays (rentalDate, isPaid) VALUES(?, 0)`)
+                const statement = db.prepare(`INSERT INTO rental (rentalDate, isPaid) VALUES(?, 0)`)
                 statement.run(new Date(tmpDate.toISOString().split('T')[0]).toISOString());
             }
             tmpDate.setDate(tmpDate.getDate()+ 1)
@@ -99,7 +99,7 @@ function createNewRentalDates(startDate, endDate) {
 }
 
 const hasRentalDays =
-  db.prepare('SELECT COUNT(*) as count FROM rentalDays').get().count > 0;
+  db.prepare('SELECT COUNT(*) as count FROM rental').get().count > 0;
 if (!hasRentalDays) {
     //TODO: Figure out a way to set up rental dates non programmatically later. 
     //perhaps as part of some kind of admin console

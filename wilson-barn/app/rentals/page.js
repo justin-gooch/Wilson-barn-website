@@ -13,11 +13,8 @@ export default async function Rentals() {
         toBeApprovedRentalDates.forEach((rentalDate) => {
             console.log(rentalDate)
             approvalNeededDatesList.push(<li key={rentalDate.id}><a href={`rentals/approvals/${rentalDate.id}`}>{rentalDate.rentalDate.split('T')[0]}</a></li>)
-        })
-        
+        })   
     }
-
-    
 
     return(
         <article className="article">
@@ -31,8 +28,7 @@ export default async function Rentals() {
             <Calendar availableRentals={availableRentals} />
 
             {adminAuthed && <>
-            <h1>Rentals For Approval</h1>
-            <ul>{approvalNeededDatesList}</ul>
+            
             </>}
         </article>
     )
