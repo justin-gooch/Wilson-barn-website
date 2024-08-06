@@ -1,12 +1,13 @@
 import Link from "next/link";
 // import { getEvents } from "../lib/database";
-import { getEventsList, getEvents } from "../lib/events";
+import { getEvents } from "../lib/database/events";
 import EventsList from "./eventsList";
 import { isAdminAuth } from "../lib/auth";
 
 
 export default async function Events() {
     const eventsList = await getEvents();
+    console.log('events page events list', eventsList)
     const adminAuthed = await isAdminAuth();
     
     return (

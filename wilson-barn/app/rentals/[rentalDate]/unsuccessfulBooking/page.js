@@ -1,6 +1,6 @@
 'use server'
 import Calendar from "@/app/components/RentalCalendar/calendar";
-import { isRentalDateAvailable, fetchAvailableRentalDates } from "@/app/lib/database"
+import { isRentalDateAvailable, fetchAvailableRentalDates } from "@/app/lib/rentals"
 
 export default async function unsuccessfulBooking({params}) {
     const rentalDateAvailable = await isRentalDateAvailable(params.rentalDate);

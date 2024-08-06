@@ -28,6 +28,9 @@ export default function MainHeader() {
                         <NavLink href='/rentals'>Rentals</NavLink>
                     </li>
                     <li>
+                        <NavLink href='/markets'>Markets</NavLink>
+                    </li>
+                    <li>
                         <NavLink href='/forms'>Forms</NavLink>
                     </li>
                 </ul>

@@ -1,8 +1,21 @@
 import Calendar from "../components/RentalCalendar/calendar";
-import { fetchAvailableRentalDates } from "../lib/rentals";
+import { isAdminAuth } from "../lib/auth";
+import { fetchAvailableRentalDates, fetchToBeApprovedRentalDates } from "../lib/database/rentals";
 
 export default async function Rentals() {
+    let toBeApprovedRentalDates;
+    let approvalNeededDatesList = [];
     const availableRentals = await fetchAvailableRentalDates();
+    const adminAuthed = await isAdminAuth();
+    if (adminAuthed) {
+        toBeApprovedRentalDates = await fetchToBeApprovedRentalDates();
+        console.log(toBeApprovedRentalDates, typeof toBeApprovedRentalDates);
+        toBeApprovedRentalDates.forEach((rentalDate) => {
+            console.log(rentalDate)
+            approvalNeededDatesList.push(<li key={rentalDate.id}><a href={`rentals/approvals/${rentalDate.id}`}>{rentalDate.rentalDate.split('T')[0]}</a></li>)
+        })
+        
+    }
 
     
 
@@ -16,6 +29,11 @@ export default async function Rentals() {
             </ul>
             <h1>Available Rentals</h1>
             <Calendar availableRentals={availableRentals} />
+
+            {adminAuthed && <>
+            <h1>Rentals For Approval</h1>
+            <ul>{approvalNeededDatesList}</ul>
+            </>}
         </article>
     )
 }

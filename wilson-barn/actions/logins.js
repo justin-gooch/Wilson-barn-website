@@ -1,6 +1,6 @@
 'use server'
 import { redirect } from "next/navigation";
-import { createUser, getUserHashedPasswordAndID } from "@/app/lib/users";
+import { createUser, getUserHashedPasswordAndID } from "@/app/lib/database/users";
 import { hashUserPassword, verifyPassword } from "@/app/lib/hash";
 import { createAuthSession } from "@/app/lib/auth";
 

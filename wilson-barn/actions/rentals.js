@@ -1,7 +1,7 @@
 'use server'
 
 
-import { storeRentalInformation } from "@/app/lib/database";
+import { storeRentalInformation } from "@/app/lib/database/rentals";
 import { redirect } from "next/navigation";
 
 export async function submitRental(prevState, formData) {
@@ -13,6 +13,7 @@ export async function submitRental(prevState, formData) {
     const phone = formData.get('phone');
     const eventType = formData.get('eventType');
     const eventDate = formData.get('eventDate');
+    const hoursRental = formData.get('hoursRental')
     const setupTimeInitial = formData.get('setupTimeInitial');
     const checkoutInitial = formData.get('checkoutInitial');
     const closeTimeInitial = formData.get('closeTimeInitial');
@@ -30,6 +31,7 @@ export async function submitRental(prevState, formData) {
     if (!phone) emptyFields.push('phone');
     if (!eventType) emptyFields.push('eventType');
     if (!eventDate) emptyFields.push('eventDate');
+    if (!hoursRental) emptyFields.push('hoursRental')
     if (!setupTimeInitial) emptyFields.push('setupTimeInitial');
     if (!checkoutInitial) emptyFields.push('checkoutInitial');
     if (!closeTimeInitial) emptyFields.push('closeTimeInitial');
@@ -62,6 +64,7 @@ export async function submitRental(prevState, formData) {
         email,
         address,
         phone,
+        hoursRental,
         eventType,
         eventDate,
         setupTimeInitial,

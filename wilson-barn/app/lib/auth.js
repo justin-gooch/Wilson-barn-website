@@ -3,8 +3,8 @@ import { Lucia } from "lucia"
 import { BetterSqlite3Adapter } from "@lucia-auth/adapter-sqlite"
 
 
-import db from './db'
-import { userIsAdmin } from './users';
+import db from './database/db'
+import { userIsAdmin } from './database/users';
 
 
 const adapter = new BetterSqlite3Adapter(db, {

@@ -53,6 +53,10 @@ export default function RentalForm({action, rentalDate}) {
                 <input type="text" id="eventType" name="eventType" />
             </div >
             <div className="form-control">
+                <label htmlFor="hoursRental">How many additional hours would you like?</label>
+                <input type="text" id="hoursRental" name="hoursRental" />
+            </div>
+            <div className="form-control">
                 <label htmlFor="eventDate">Date of Event</label>
                 <input type="date" id="eventDate" name="eventDate" value={currRentalDate} readOnly />
             </div >

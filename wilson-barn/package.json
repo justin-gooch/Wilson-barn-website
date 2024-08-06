@@ -12,6 +12,9 @@
   },
   "dependencies": {
     "@lucia-auth/adapter-sqlite": "^3.0.2",
+    "@paypal/checkout-server-sdk": "^1.0.3",
+    "@paypal/paypalhttp": "^1.0.1",
+    "base-64": "^1.0.0",
     "better-sqlite3": "^11.0.0",
     "cloudinary": "^2.2.0",
     "express": "^4.19.2",

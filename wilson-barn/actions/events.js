@@ -1,7 +1,7 @@
 'use server'
 
 import { uploadImage } from "@/app/lib/cloudinary";
-import { storeEvent } from "@/app/lib/events";
+import { storeEvent } from "@/app/lib/database/events";
 import { redirect } from "next/navigation";
 
 export async function createEvent(prevState, formData) {

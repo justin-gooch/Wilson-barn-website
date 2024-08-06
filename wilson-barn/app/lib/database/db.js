@@ -35,6 +35,7 @@ db.exec(`CREATE TABLE IF NOT EXISTS rentalDays (
     rentalDate datetime UNIQUE,
     renterID INTEGER,
     isPaid INTEGER,
+    isApproved INTEGER,
     FOREIGN KEY(renterID) REFERENCES users(id) ON DELETE CASCADE
 )`);
 
@@ -45,6 +46,7 @@ db.exec(`CREATE TABLE IF NOT EXISTS rentalInformation (
     renterID INTEGER,
     address TEXT NOT NULL,
     phone TEXT NOT NULL,
+    hoursRental TEXT NOT NULL,
     eventType TEXT NOT NULL,
     eventDate datetime,
     setupTimeInitial TEXT NOT NULL,
@@ -53,10 +55,22 @@ db.exec(`CREATE TABLE IF NOT EXISTS rentalInformation (
     noAlcoholInitial INTEGER NOT NULL,
     noBaloonsInitial INTEGER NOT NULL,
     noSmokingInitial INTEGER NOT NULL,
+    rentalDayID INTEGER NOT NULL,
     signature TEXT NOT NULL, 
     submitDate datetime,
-    FOREIGN KEY(renterID) references users(id) ON DELETE CASCADE
+    FOREIGN KEY(renterID) references users(id)
+    FOREIGN KEY(rentalDayID) references rentalDays(id) ON DELETE CASCADE
 )`);
+
+db.exec(`CREATE TABLE IF NOT EXISTS rentalInvoice (
+    id INTEGER PRIMARY KEY,
+    invoiceID TEXT NOT NULL,
+    invoiceDate INTEGER NOT NULL, 
+    rentalID INTEGER NOT NULL,
+    paid INTEGER NOT NULL,
+    sent INTEGER NOT NULL,
+    FOREIGN KEY(rentalID) references rentalInformation(id)
+)`)
 
 
 const statement = db.prepare('SELECT COUNT(*) AS count FROM users');
