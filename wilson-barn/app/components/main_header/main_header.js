@@ -34,7 +34,9 @@ export default async function MainHeader() {
                     <li>
                         <NavLink href='/forms'>Forms</NavLink>
                     </li>
-                    {/* <AdminConsoleLink /> */}
+                    <li>
+                        <NavLink href='/admin'>Admin</NavLink>
+                    </li>
                 </ul>
 
             </nav>

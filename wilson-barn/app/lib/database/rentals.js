@@ -56,13 +56,38 @@ export async function fetchRentalIDFromRentalDateID(rentalDateID) {
 }
 
 export async function fetchToBeApprovedRentalDates() {
-    const statement = db.prepare(`SELECT id, rentalDate FROM rental where isPaid = 0 and renterId is not null and isApproved = 0`);
+    const statement = db.prepare(`SELECT id, rentalDate FROM rental WHERE isPaid = 0 AND renterId IS not null AND isApproved = 0`);
     return statement.all();
 }
 
-export async function setRentalAsApproved(rentalID) {
-    const statement = db.prepare('update rental set isApproved = 1  where id = ?')
+export async function fetchToBePaidRentalDates() {
+    const statement = db.prepare(`SELECT id, rentalDate from rental WHERE isPaid = 0 AND isApproved = 1 AND renterId is not null`);
+    return statement.all();
+}
+
+export async function fetchDeniedRentalDates() {
+    const statement = db.prepare(`SELECT id, rentalDate FROM rental WHERE isApproved = 2 and renterID is not null`);
+    return statement.all();
+}
+
+export async function deleteRental(rentalID) {
+    const statement = db.prepare('UPDATE rental SET isApproved = 0, renterID = null, isPaid = 0 WHERE id = ?')
     statement.run(rentalID);
+}
+
+export async function setRentalAsApproved(rentalID) {
+    const statement = db.prepare('UPDATE rental SET isApproved = 1  WHERE id = ?')
+    statement.run(rentalID);
+}
+
+export async function setRentalAsDenied(rentalID) {
+    const statement = db.prepare('UPDATE rental SET isApproved = 2 WHERE id = ?')
+    statement.run(rentalID);
+}
+
+export async function setRentalAsPaid(rentalID) {
+    const statement = db.prepare('update rental set isPaid = 1 WHERE id = ?')
+    statement.run(rentalID)
 }
 
 export async function isRentalDateAvailable(rentalDate) {

@@ -26,7 +26,10 @@ export default async function rentalApprovalForm({params}) {
         No Smoking Initial: {thisRental['noSmokingInitial']}</p>
         <p>Date Submitted: {thisRental['submitDate']}</p>
         <p>Signature <img src={thisRental['signature']} /> </p>
-        <p><a href={`/rentals/approvals/${rentalID}/approve`}>Approve</a> <a href={`/rentals/approvals/${rentalID}/deny`}>Deny</a></p>
+        <p>
+            <a href={`/admin/rentals/approvals/${rentalID}/approve`}><button>Approve</button></a> 
+            <a href={`/admin/rentals/approvals/${rentalID}/deny`}><button>Deny</button></a>
+        </p>
         </article>
         </>
        )
