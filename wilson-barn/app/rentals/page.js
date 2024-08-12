@@ -9,9 +9,7 @@ export default async function Rentals() {
     const adminAuthed = await isAdminAuth();
     if (adminAuthed) {
         toBeApprovedRentalDates = await fetchToBeApprovedRentalDates();
-        console.log(toBeApprovedRentalDates, typeof toBeApprovedRentalDates);
         toBeApprovedRentalDates.forEach((rentalDate) => {
-            console.log(rentalDate)
             approvalNeededDatesList.push(<li key={rentalDate.id}><a href={`rentals/approvals/${rentalDate.id}`}>{rentalDate.rentalDate.split('T')[0]}</a></li>)
         })   
     }

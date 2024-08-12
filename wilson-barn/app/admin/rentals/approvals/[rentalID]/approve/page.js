@@ -1,4 +1,5 @@
 import { isAdminAuth } from "@/app/lib/auth";
+import { setRentalAsApproved } from "@/app/lib/database/rentals";
 import { createAndSendInvoice } from "@/app/lib/paypal";
 
 export default async function approve({params}) {
@@ -15,10 +16,11 @@ export default async function approve({params}) {
                 <p>once paid, please confirm via the rental page</p>
             </>
         } else {
-            return <>
-                <h1>There was an error</h1>
-                <p>Please consult with the administrator to resolve</p>
-                </>
+            await setRentalAsApproved(rentalID);
+            return <article>
+                <h1>the invoice was already created</h1>
+                <p>However it is now approved and you can confirm it's payment</p>
+                </article>
         }
 
     }

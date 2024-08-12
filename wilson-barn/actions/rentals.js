@@ -45,7 +45,6 @@ export async function submitRental(prevState, formData) {
 
     if (emptyFields.length > 0) {
         const errorMessage = `The field${emptyFields.length > 1 ? 's' : ''} '${emptyFields.join(', ')}' ${emptyFields.length > 1 ? 'are' : 'is'} required`;
-        console.log(errorMessage);
 
         return(errorMessage);
     }
@@ -53,7 +52,6 @@ export async function submitRental(prevState, formData) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
         const errorMessage = 'Invalid email address';
-        console.log(errorMessage);
         return errorMessage;
     }
 
@@ -76,9 +74,6 @@ export async function submitRental(prevState, formData) {
         signature,
         submitDate
     })
-
-    console.log('storeRentalQuery', storeRentalQuery, eventDate);
-
 
     if(storeRentalQuery) {
         redirect(`/rentals/${eventDate}/booked`)

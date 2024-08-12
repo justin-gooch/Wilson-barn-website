@@ -17,12 +17,9 @@ export async function createNewRentalDates(startDate, endDate) {
 }
 
 export async function storeRentalInformation(post) {
-    console.log(post.eventDate);
     const statement = db.prepare(`SELECT id, renterID FROM rental WHERE rentalDate = ?`);
-    console.log(`SELECT renterID FROM rental WHERE rentalDate = ${new Date(post.eventDate).toISOString()}`)
     const result = statement.get(new Date(post.eventDate).toISOString());
     const rentalDateID = result.id;
-    console.log('db result', result);
     if (result && result.renterID) {
         // Rental already exists for the given date
         // Handle the case accordingly
@@ -93,7 +90,6 @@ export async function setRentalAsPaid(rentalID) {
 export async function isRentalDateAvailable(rentalDate) {
     const statement = db.prepare(`SELECT renterId FROM rental WHERE rentalDate = ?`)
     const result = statement.get(new Date(rentalDate).toISOString())
-    console.log('isRentalDateAvailable', result, `SELECT renterId FROM rental WHERE rentalDate = '${new Date(rentalDate).toISOString()}'`)
     if (result && result.renterID > 0) {
         return false;
     }

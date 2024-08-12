@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 export default function Event(event) {
-    console.log('eventjs event', event)
     if (event) {
         return <main>
         <h1>{event.title}</h1>

@@ -66,7 +66,6 @@ export async function createAndSendInvoice(rentalID) {
     if (invoiceExists !== undefined) {
         return false;
     }
-    console.log('invoiceExists', invoiceExists === undefined)
     // const invoice = createNewInvoice(todaysDate, rentalInfo[0].rentalInfoID);
     //check to see if an invoice already exists for this date. 
 

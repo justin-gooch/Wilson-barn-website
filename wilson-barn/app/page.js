@@ -8,7 +8,8 @@ export default async function Home() {
   return (
     <main>
       <h1>Welcome To The Wilson Barn</h1>
-      <h3>We are located at the corner of West Chicago and Middlebelt in Livonia Michigan</h3>
+      <h3>We are located at 29350 West Chicago Livonia, MI 48150</h3>
+
       <EventsList eventsList={eventsList} />
     </main>
   );

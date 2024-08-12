@@ -8,7 +8,6 @@ export default async function unsuccessfulBooking({params}) {
     if(!rentalDateAvailable) {
         availableRentalDates = await fetchAvailableRentalDates();
     }
-    console.log('isRentalDateAvailable?', rentalDateAvailable);
     return (
         <article>
             <h1>Unsuccessful Booking Attempt</h1>

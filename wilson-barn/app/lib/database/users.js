@@ -6,10 +6,8 @@ export async function createUser(email, password, first_name, last_name) {
 }
 
 export async function loginUser(email, password) {
-    console.log('loginUser called with', email, password);
     const statement = db.prepare('SELECT id FROM users WHERE email = ? AND password = ?')
     const result = statement.get(email, password);
-    console.log('result = ', result);
     return result;
 }
 
@@ -23,10 +21,8 @@ export async function userIsAdmin(userId) {
     const statement = db.prepare('SELECT user_type from users where id = ?')
     const result = statement.get(userId);
     if(result && result['user_type'] === 0) {
-        console.log('user is admin');
         return true;
     } else {
-        console.log('user is type', result['user_type'])
         return false;
     }
 

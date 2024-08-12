@@ -19,11 +19,9 @@ export default function RentalForm({action, rentalDate}) {
     }
 
     const saveSignature = () => {
-        console.log('saveSignature was called')
         if (sigPad.current) {
             const sigImage = sigPad.current.toDataURL();
             // setSignature(sigImage);
-            console.log('sigpad = ', sigPad.current.toDataURL())
             setCurrentSignature(sigImage)
         }
     }
@@ -170,7 +168,6 @@ export default function RentalForm({action, rentalDate}) {
                 </div >
                 <div className='form-actions signature'>
                     <button type='button' onClick={clearSignature} >Clear Signature</button>
-                    {/* <button type='button' onClick={saveSignature}>Save Signature</button> */}
                 </div >
                 <div hidden>
                     <input type='text' id='signature' name='signature' value={currentSignature} onChange={saveSignature}/>

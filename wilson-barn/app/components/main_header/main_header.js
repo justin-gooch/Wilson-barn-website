@@ -32,9 +32,6 @@ export default async function MainHeader() {
                         <NavLink href='/markets'>Markets</NavLink>
                     </li>
                     <li>
-                        <NavLink href='/forms'>Forms</NavLink>
-                    </li>
-                    <li>
                         <NavLink href='/admin'>Admin</NavLink>
                     </li>
                 </ul>

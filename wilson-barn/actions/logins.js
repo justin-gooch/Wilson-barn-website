@@ -14,7 +14,6 @@ export async function submitLogin(prevState, formData) {
 
     const userHashedPasswordAndID = await getUserHashedPasswordAndID(email);
     if (userHashedPasswordAndID) {
-        console.log('submitLogin userhashedpass', userHashedPasswordAndID['password']);
         const verified = verifyPassword(userHashedPasswordAndID['password'], password)
         if(verified) {
             const userID = userHashedPasswordAndID['id']
@@ -68,7 +67,6 @@ export async function submitRegistration(prevState, formData) {
 
     try {
         const userId = await createUser(email, hashUserPassword(password), first_name, last_name);
-        console.log('user id for registration is', userId)
         await createAuthSession(userId)
         redirect('/registrationSuccess')
 

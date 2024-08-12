@@ -11,7 +11,6 @@ export default async function EventPage({params}) {
     }
 
     const thisEvent = event[0]
-    console.log(thisEvent);
 
     return (
         <article className='event'>

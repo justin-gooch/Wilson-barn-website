@@ -7,7 +7,6 @@ import { isAdminAuth } from "../lib/auth";
 
 export default async function Events() {
     const eventsList = await getEvents();
-    console.log('events page events list', eventsList)
     const adminAuthed = await isAdminAuth();
     
     return (
