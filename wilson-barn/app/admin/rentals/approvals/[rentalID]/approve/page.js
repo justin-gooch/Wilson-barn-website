@@ -1,6 +1,6 @@
 import { isAdminAuth } from "@/app/lib/auth";
 import { setRentalAsApproved } from "@/app/lib/database/rentals";
-import { createAndSendInvoice } from "@/app/lib/paypal";
+import { sendRentalInvoice } from "@/app/lib/paypal";
 
 export default async function approve({params}) {
     const adminAuthed = await isAdminAuth();
@@ -9,7 +9,7 @@ export default async function approve({params}) {
     const rentalID = params.rentalID;
 
     if(adminAuthed) {
-        const paypalInvoice = await createAndSendInvoice(rentalID);
+        const paypalInvoice = await sendRentalInvoice(rentalID);
         if (paypalInvoice) {
             return <>
                 <h1>Invoice Successfully Sent</h1>

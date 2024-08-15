@@ -127,6 +127,7 @@ db.exec(`CREATE TABLE IF NOT EXISTS marketApplication (
     signature TEXT NOT NULL,
     approved INTEGER NOT NULL,
     paid INTEGER NOT NULL,
+    invoiceID TEXT,
     FOREIGN KEY(marketID) references market(id)
 )`);
 

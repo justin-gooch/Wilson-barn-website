@@ -95,6 +95,29 @@ export async function setApplicationAsUnpaid(applicationID) {
     const statement = db.prepare(`UPDATE marketApplication set paid = 0 WHERE id = ?`)
     statement.run(applicationID);
 }
-   
+
+export async function fetchMarketApplicationsByMarketID(marketID) {
+    const statement = db.prepare('SELECT * FROM marketApplication where marketID = ?')
+    return statement.all(marketID);
+}
+
+export async function saveMarketApplicationInvoice(marketApplicationID, invoiceID) {
+    const statement = db.prepare(`UPDATE marketApplication set invoiceID = ? WHERE id = ?`)
+    statement.run(invoiceID, marketApplicationID);
+}
+
+export async function fetchMarketApplicationByInvoiceID(invoiceID) {
+    const statement = db.prepare('SELECT * FROM marketApplication where invoiceID = ?')
+    return statement.all(invoiceID);
+}
+
+export async function marketApplicationHasInvoice(applicationID) {
+    const statement = db.prepare('SELECT * FROM marketApplication where id = ? and invoiceID is not null')
+    const results = statement.all(applicationID);
+    if (results.length > 0) {
+        return true;
+    } 
+    return false;
+}
 
 

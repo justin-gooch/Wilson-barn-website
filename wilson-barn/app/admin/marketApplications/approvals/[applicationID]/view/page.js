@@ -29,7 +29,7 @@ export default async function viewMarketApplication({params}) {
         <h4>Hold harmless (liability):  {marketApplicationInfo.hold_harmless === 1 ? 'Yes' : 'No'}</h4>
         <h4>submit date:  {marketApplicationInfo.submit_date}</h4>
         <h4>Agree to pay via paypal? :  {marketApplicationInfo.paying_via_paypal === 1 ? 'Yes' : 'No'}</h4>
-        <h4>approved:  {marketApplicationInfo.approved === 1 ? 'Yes' : approved === 2 ? 'Denied' : 'Not Yet'}</h4>
+        <h4>approved:  {marketApplicationInfo.approved === 1 ? 'Yes' : marketApplicationInfo.approved === 2 ? 'Denied' : 'Not Yet'}</h4>
         <h4>paid:  {marketApplicationInfo.paid === 1 ? 'Yes' : 'No'}</h4>
         <h4>Signature: <img src={marketApplicationInfo.signature} /></h4>
 
